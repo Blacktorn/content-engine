@@ -14,15 +14,15 @@ jobs:
       - name: Setup Kubectl
         uses: azure/setup-kubectl@v3
       - name: Configure Kubectl
-        run:
+        run: |
           mkdir -p ~/.kube
           echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config 
       - name: Apply K8s Manifest
-        run:
+        run: |
           kubectl apply -f k8s/
-      - name: Trigger K8s Deployment Rollout
-        run:
+      - name: Trigger K8s Deployment 
+        run: |
           kubectl rollout restart deployment/${{ env.DEPLOYMENT_NAME }}
       - name: TriggervERIFY K8s Deployment Rollout
-        run:
+        run: |
           kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
