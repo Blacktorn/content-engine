@@ -20,9 +20,9 @@ jobs:
       - name: Apply K8s Manifest
         run: |
           kubectl apply -f k8s/
-      - name: Trigger K8s Deployment 
+      - name: Trigger K8s Deployment Rollout
         run: |
-          kubectl rollout restart deployments/{{ env.DEPLOYMENT_NAME }}
-      - name: TriggervERIFY K8s Deployment Rollout
+          kubectl rollout restart deployments/${{ env.DEPLOYMENT_NAME }}
+      - name: Verify K8s Deployment Rollout
         run: |
           kubectl rollout status deployments/${{ env.DEPLOYMENT_NAME }}
