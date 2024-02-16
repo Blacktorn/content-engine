@@ -12,5 +12,3 @@ metadata:
   name: content-engine-configmap
 data:
   WELCOME_MSG: "Welcome to content engine"
-
----
