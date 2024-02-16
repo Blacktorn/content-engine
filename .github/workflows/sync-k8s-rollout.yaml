@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'k8s/**'
-      - .github\workflows\sync-k8s-rollout.yaml
+      - .github/workflows/sync-k8s-rollout.yaml
   workflow_dispatch:
 
 
