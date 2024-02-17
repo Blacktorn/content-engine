@@ -7,7 +7,7 @@ on:
       - 'k8s/**'
       - .github/workflows/sync-k8s-rollout.yaml
   workflow_dispatch:
-
+    
 
 jobs:
   k8s_apply:
@@ -21,7 +21,7 @@ jobs:
       - name: Configure Kubectl
         run: |
           mkdir -p ~/.kube
-          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config   
+          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
       - name: Configure Deployment Secrets
         run: |
           mkdir -p k8s/
@@ -32,7 +32,7 @@ jobs:
             name: content-engine-secret
           stringData:            
             DJANGO_SECRET_KEY: "${{ secrets.DJANGO_SECRET_KEY }}"            
-          EOF    
+          EOF
       - name: Apply K8s Manifests
         run: |
           kubectl apply -f k8s/
