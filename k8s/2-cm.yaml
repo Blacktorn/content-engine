@@ -4,6 +4,7 @@ metadata:
   name: django-configmap
 data:
   PORT: "8080"
+
 ---
 
 apiVersion: v1
