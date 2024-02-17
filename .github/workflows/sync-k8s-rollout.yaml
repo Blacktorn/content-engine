@@ -21,7 +21,7 @@ jobs:
       - name: Configure Kubectl
         run: |
           mkdir -p ~/.kube
-          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config   
       - name: Configure Deployment Secrets
         run: |
           mkdir -p k8s/
@@ -30,10 +30,10 @@ jobs:
           kind: Secret
           metadata:
             name: content-engine-secret
-          stringData:
-            DJANGO_SECRET_KEY: "${{ secrets.DJANGO_SECRET_KEY }}"
-          EOF          
-      - name: Apply K8s Manifest
+          stringData:            
+            DJANGO_SECRET_KEY: "${{ secrets.DJANGO_SECRET_KEY }}"            
+          EOF    
+      - name: Apply K8s Manifests
         run: |
           kubectl apply -f k8s/
       - name: Trigger K8s Deployment Rollout
