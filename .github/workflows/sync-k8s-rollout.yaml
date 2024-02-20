@@ -42,3 +42,5 @@ jobs:
       - name: Verify K8s Deployment Rollout
         run: |
           kubectl rollout status deployments/${{ env.DEPLOYMENT_NAME }}
+
+          # This is the end
